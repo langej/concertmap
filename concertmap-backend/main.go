@@ -24,25 +24,6 @@ func main() {
 
 	routes := app.Party("/", crs).AllowMethods(iris.MethodOptions)
 
-	// Method:   	GET
-	// Resource: 	http://localhost:8080
-	routes.Handle("GET", "/", func(ctx iris.Context) {
-		ctx.HTML("<h1>Welcome</h1>")
-	})
-
-	// same as app.Handle("GET", "/ping", [...])
-	// Method:   	GET
-	// Resource: 	http://localhost:8080/ping
-	routes.Get("/ping", func(ctx iris.Context) {
-		ctx.WriteString("pong")
-	})
-
-	// Method:   	GET
-	// Resource: 	http://localhost:8080/hello
-	routes.Get("/hello", func(ctx iris.Context) {
-		ctx.JSON(iris.Map{"message": "Hello Iris!"})
-	})
-
 	// Method:		GET
 	// Resource:	http://localhost:8080/search/artist/
 	routes.Get("/search/artist/{name}", searchArtist)
@@ -55,7 +36,7 @@ func main() {
 	routes.Get("/get/events/location/ip/{ip}", getEventsFromIP)
 	routes.Get("/get/events/location/geo/{latitude}/{longitude}", getEventsFromGeolocation)
 	routes.Get("/get/events/venue/{id}", getEventsFromVenue)
-	routes.Get("/get/past-events/{id}", getPastEventsFromArtist)
+	routes.Get("/get/past-events/artist/{id}", getPastEventsFromArtist)
 
 	app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
 }

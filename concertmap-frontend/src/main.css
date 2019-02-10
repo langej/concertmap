@@ -1,0 +1,131 @@
+#map-container {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100vw; 
+    min-height: 100vh;
+    max-width: 100vw; 
+    max-height: 100vh;
+    resize: both;
+    /* overflow: auto; */
+}
+
+input#searchbar {
+    position: fixed;
+    top: 10px;
+    width: 30vw;
+
+    left: 50%;
+    margin-left: -15vw;
+
+    z-index: 1;
+
+    padding: 10px 20px;
+    opacity: 0.5;
+    border: none;
+
+    font-size: 18px;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}
+
+#searchbar:hover, #searchbar:focus-within, #searchbar:focus {
+    opacity: 0.7;
+}
+
+#result-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    opacity: 0.7;
+    
+    width: 90vw;
+    height: 80vh;
+
+    left: 50%;
+    margin-left: -45vw;
+    top: 100px;
+
+    background-color: black;
+    color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#result-modal > #close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: rgb(255, 0, 0);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-bottom-left-radius: 5px;
+    height: 30px;
+    width: 40px;
+    cursor: pointer;
+}
+
+#search-results {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr 1px 1fr;
+    height: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+/* 
+#results-artists, #result-venues, #result-locations {
+
+}
+*/
+
+.result {
+    background: rgba(0,0,0,0);
+    transition: background 1s;
+    padding: 5px;
+}
+
+.result:hover {
+    /* background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(144, 238, 144, 0.404), rgba(255, 255, 255, 0)); */
+    background: rgba(0, 221, 0, 0.603);
+    cursor: pointer;
+}
+
+.divider {
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+}
+
+#infobox-noevents {
+    visibility: hidden;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background-color: #00000073;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+
+/* Scrollbar Style */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f100; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.35); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5); 
+}

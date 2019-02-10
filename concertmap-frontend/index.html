@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+
+	<title>Maps in Concert</title>
+
+	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+	<!-- Here Maps -->
+	<script src="http://js.api.here.com/v3/3.0/mapsjs-core.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://js.api.here.com/v3/3.0/mapsjs-service.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://js.api.here.com/v3/3.0/mapsjs-ui.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://js.api.here.com/v3/3.0/mapsjs-ui.css" />
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="src/main.css">
+</head>
+
+<body>
+
+	<input id="searchbar" type="text" placeholder="Search..">
+
+	<section style="width: 100vw; height: 100vh;" id="map-container"></section>
+
+	<section id="result-modal">
+		<button id="close"><i class="fas fa-window-close"></i></button>
+		<div id="search-results">
+			<div>
+				<h1>Artists</h1>
+				<div id="result-artists"></div>
+			</div>
+			<div class="divider"></div>
+			<div>
+				<h1>Venues</h1>
+				<div id="result-venues"></div>
+			</div>
+			<div class="divider"></div>
+			<div>
+				<h1>Locations</h1>
+				<div id="result-locations"></div>
+			</div>
+		</div>
+	</section>
+
+	<section id="infobox-noevents">
+		<i class="fas fa-info-circle"></i>
+		No Events found
+	</section>
+
+	<script src="src/main.ts"></script>
+
+</body>
+
+</html>

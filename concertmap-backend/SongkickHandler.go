@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -19,8 +20,11 @@ func searchArtist(ctx iris.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	result := readBody(res.Body)
-	ctx.Writef("%s", result)
+	resultString := readBody(res.Body)
+	var result ArtistSearchResults
+	json.Unmarshal([]byte(resultString), &result)
+	response, _ := json.Marshal(result)
+	ctx.Writef("%s", string(response))
 }
 
 func searchLocation(ctx iris.Context) {
