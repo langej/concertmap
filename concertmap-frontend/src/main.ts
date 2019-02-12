@@ -71,7 +71,7 @@ const getEventsWithGeolocation = (latitude: number, longitude: number) => {
                         event))
                 }
             )
-            showMarkersOnMap(markers)
+            showMarkersOnMap(markers, 'geo')
         }
     )
 }
