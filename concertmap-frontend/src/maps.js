@@ -38,6 +38,13 @@ const getNewEventMarker = (latitude, longitude, event) => {
             )}</ul>
             <p>Venue: ${event.venue.displayName}</p>
             <a href=${event.uri}>Event details</a>
+            <hr>
+            ${event.songs.length > 0 ? `<h4>Most played Songs</h4>` : ""}
+            ${event.songs.length > 0 ? event.songs.map(
+                song => `
+                    <span style="font-size: x-small;">${song.name}: ${song.count} times</span><br>
+                `
+            ) : ""}
         </div>
     `
 
@@ -64,7 +71,7 @@ const showMarkersOnMap = (markers, type) => {
             marker => linestring.pushPoint({lat: marker.b.lat, lng: marker.b.lng})
         )
         let polyline = new H.map.Polyline(linestring, { style: { lineWidth: 7 }});
-        polyline.setArrows({frequency: 3, fillColor: 'rgb(255,255,255)'})
+        polyline.setArrows({frequency: 3, fillColor: 'rgba(255,255,255, 0.4)'})
         visibleLine = polyline
         map.addObject(polyline)
     }

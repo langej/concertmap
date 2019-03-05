@@ -38,5 +38,7 @@ func main() {
 	routes.Get("/get/events/venue/{id}", getEventsFromVenue)
 	routes.Get("/get/past-events/artist/{id}", getPastEventsFromArtist)
 
+	routes.Get("/get/setlist/{name}", getSetlistsForArtist)
+
 	app.Run(iris.Addr(":8080"), iris.WithoutServerError(iris.ErrServerClosed))
 }
