@@ -140,5 +140,7 @@ func readBody(closer io.ReadCloser) []byte {
 }
 
 func clearQueryString(query string) string {
-	return strings.Replace(query, " ", "+", -1)
+
+	tmp := strings.Replace(query, " ", "+", -1)
+	return tmp
 }

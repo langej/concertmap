@@ -1,7 +1,7 @@
 import Axios from 'axios'
 import { bind, wire } from 'hyperhtml'
 import { moveMapToGeolocation, getNewEventMarker, showMarkersOnMap } from './maps'
-import { getEventsByArtist, getEventsByVenue, getEventsByLocation } from './requestHandler/GetEvents'
+import { getEventsByArtist, getEventsByVenue, getEventsByLocation, getEventsWithGeolocation } from './requestHandler/GetEvents'
 
 const inputChangeHandler = (evt: any) => {
     if (evt.target.value !== '') {
@@ -13,7 +13,7 @@ const inputChangeHandler = (evt: any) => {
                     bind(dom)`
                         ${response.data.ResultsPage.Results.Artist.map(
                             result => wire(result)`
-                                <div class='result' id=${result.Id} onclick=${getEventsByArtist}>
+                                <div class='result' id=${result.Id} onclick=${getEventsByArtist} name=${result.DisplayName}>
                                     ${result.DisplayName}
                                 </div>
                             `
@@ -58,23 +58,7 @@ const inputChangeHandler = (evt: any) => {
     }
 }
 
-const getEventsWithGeolocation = (latitude: number, longitude: number) => {
-    Axios.get(`http://localhost:8080/get/events/location/geo/${latitude}/${longitude}`).then(
-        (response) => {
-            const events = response.data.resultsPage.results.event
-            let markers = []
-            events.map(
-                (event: any) => {
-                    markers.push(getNewEventMarker(
-                        event.location.lat,
-                        event.location.lng,
-                        event))
-                }
-            )
-            showMarkersOnMap(markers)
-        }
-    )
-}
+
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
